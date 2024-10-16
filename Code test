@@ -1,0 +1,46 @@
+#Student name: Ege Artan
+#Student number: 1010724628
+#PHYB57H3F, 2024, Problem Set 2
+
+"""
+Solution to the first problem:
+In this problem, we are required to find the time complexity for the algorithm
+that will be defined below as 'GoofyAhhFunction'. We will proceed to
+hypothesize the time complexity, and then we will plot different time taken
+to run the program with respect to different inputs, we will try to see
+if our prediction was close.
+"""
+
+def GoofyAhhFunction(n): #this defines the function
+  if n < 1:
+    return 1 #return t(n)=1 if n<1
+  else: #return t(n)=t(n/2)+t(n/4) if n>1
+    return GoofyAhhFunction(n/2) + GoofyAhhFunction(n/4)
+
+"""
+Now, we will give a hypothesis on the time complexity of GoofyAhhFunction(n).
+Note that we are calling the function for each iteration twice, this would
+give us a time complexity of c2^n, equivalent to O(n)=2^n. So,
+"""
+
+import time #importing this module to measure time elapsed in lines
+import numpy as n
+
+number_of_trials = 20 #how many different n numbers to try out
+lowerbound = 3 #the lower bound of the n numbers
+upperbound = 6000000000 #the upper bound of the n numbers
+
+n_list= n.linspace(lowerbound, upperbound, number_of_trials).tolist()
+time_list = ()
+
+print(n_list)
+
+for i in n_list:
+  start = time.time()
+  print("Number")
+  print(i)
+  print("Result")
+  print(GoofyAhhFunction(i))
+  end = time.time()-start
+  print("Time")
+  print(end)
